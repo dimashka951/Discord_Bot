@@ -3,13 +3,17 @@ Zespol:
   {
 	5.09.2023
 	6.09.2023
-	13.09.2023	
+	13.09.2023
+	14.09.2023	
   }
 
   Dmytro Chumachenko - Programista
   {
 	5.09.2023
-	6.09.2023	
+	6.09.2023
+	13.09.2023(2)
+	14.09.2023(2)
+		
   }
 
   Oskar Łaczmański - Programista ??
@@ -19,5 +23,6 @@ Zespol:
   Maksym Olshanskyi - Tester
   {
 	5.09.2023
-	13.09.2023	
+	13.09.2023
+	14.09.2023	
   }
