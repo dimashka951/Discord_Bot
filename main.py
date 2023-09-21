@@ -8,5 +8,7 @@ async def on_ready():
     print("The bot is now ready for use!")
     print("-------------------")
 
+
+    
 print("hello")
 client.run(TOKEN)
