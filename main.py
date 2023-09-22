@@ -8,7 +8,8 @@ async def on_ready():
     print("The bot is now ready for use!")
     print("-------------------")
 
-
+@client.event
+async def hello(ctx):
+    await ctx.send("Hello")
     
-print("hello")
 client.run(TOKEN)
