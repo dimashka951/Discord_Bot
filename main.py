@@ -2,39 +2,43 @@ import discord
 from discord.ext import commands
 from keys import *
 
-bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-@bot.event
+@client.event
 async def on_ready():
-    print(f'Logged in as {bot.user.name}')
+    print(f'Logged in as {client.user.name}')
 
-@bot.event
+@client.event
 async def on_message(message):
-    if message.author == bot.user:
-        return
+    await client.process_commands(message)
 
-    parts = message.content.split('|')
+    while len(TeamList) <= 16: 
+        if message.author == client.user:
+            return
 
-    if len(parts) == 3:
-        TeamName = parts[0]
-        TeamTag = parts[1]
-        TeamManagerId = parts[2].strip()  
+        if message.channel.id == regChat:
+            teamToTeamList = message.content.split('|')
 
-        try:
-            server = message.guild
+            try:
+                tname = teamToTeamList[0]
+                ttag = teamToTeamList[1]
+                tmanager = teamToTeamList[2][3:-1].strip()
 
-            user = await server.fetch_member(int(TeamManagerId))
+                guild = message.guild
+                role = discord.utils.get(guild.roles, id=cap_role_id)
+                member = guild.get_member(int(tmanager))
 
-            role = discord.utils.get(server.roles, id=cap_role_id)
-
-            if user and role:
-                await user.add_roles(role)
-                await message.channel.send(f'Роль {role.name} була додана користувачу {user.display_name}')
+                await member.add_roles(role)
+            except:
+                await message.add_reaction(em_not_correct)
             else:
-                await message.channel.send('Не вдалося знайти користувача або роль')
-        except Exception as e:
-            await message.channel.send(f'Виникла помилка: {e}')
-    else:
-        await message.channel.send("Заявка подана не правильно")
+                await message.add_reaction(em_correct)
+                TeamList.append([tname, ttag, tmanager])
 
-bot.run(TOKEN)
+    if len(TeamList) == 16:  
+        await message.channel.send("Teamlist full")
+        
+
+
+
+client.run(TOKEN)
