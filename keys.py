@@ -1,6 +1,29 @@
-TOKEN = "MTA4MzczNjkxMDgzODYyODQwMw.GHiAbs.BxS_U_lDJ-y41_8zUqy7rJK9eJiEuAhxmqP-3s"
+TOKEN = "MTA4MzczNjkxMDgzODYyODQwMw.Gg3CdJ.m6mgpbSinuhPQ7jbd6CglYCGziPyc-6A-X10II"
 
-TeamList = []
+class Team:
+    def __init__(self, name, tag, maneger):
+        self.name = name
+        self.tag = tag
+        self.meneger = maneger
+
+    
+    teamlist = []
+    
+    def get_teamlist():
+        return Team.teamlist
+    
+    def set(self, teamName,teamTag,teamManager):
+        team = Team(teamName, teamTag, teamManager)
+
+    def set_teamName():
+        print("W trakcie")
+    
+    def set_teamName():
+        print("W trakcie")
+
+    def set_teamManager():
+        print("W trakcie")
+
 # ЧАТИ
 regChat = 1096411841304993872  # встановити id потрібного чату
 # РЕАКЦІЇ

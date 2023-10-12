@@ -12,31 +12,38 @@ async def on_ready():
 async def on_message(message):
     await client.process_commands(message)
 
-    while len(TeamList) <= 16: 
-        if message.author == client.user:
-            return
+    
+    if message.author == client.user:
+        return
 
-        if message.channel.id == regChat:
-            teamToTeamList = message.content.split('|')
+    if message.channel.id == regChat:
+        checkMessage = message.content.split('|')
 
-            try:
-                tname = teamToTeamList[0]
-                ttag = teamToTeamList[1]
-                tmanager = teamToTeamList[2][3:-1].strip()
+        try:
 
-                guild = message.guild
-                role = discord.utils.get(guild.roles, id=cap_role_id)
-                member = guild.get_member(int(tmanager))
+            tname = checkMessage[0]
+            ttag = checkMessage[1]
+            tmanager = checkMessage[2][3:-1].strip()
 
-                await member.add_roles(role)
-            except:
-                await message.add_reaction(em_not_correct)
-            else:
+            guild = message.guild
+            role = discord.utils.get(guild.roles, id=cap_role_id)
+            member = guild.get_member(int(tmanager))
+
+            await member.add_roles(role)
+        except:
+            await message.add_reaction(em_not_correct)
+        else:
+            if len(Team.teamlist) <=16:
                 await message.add_reaction(em_correct)
-                TeamList.append([tname, ttag, tmanager])
+                
+                teamToTeamList = Team(tname, ttag, tmanager)
+                Team.teamlist.append([teamToTeamList.name, teamToTeamList.tag, teamToTeamList.meneger])
+            else:
+                await message.add_reaction(em_not_correct)
 
-    if len(TeamList) == 16:  
+    if len(Team.teamlist) == 16:  
         await message.channel.send("Teamlist full")
+        print(Team.teamlist)
         
 
 
