@@ -7,9 +7,13 @@ Denis:
 	1) Stworzenie klasy team +
 	     Metody get_teamlist, set + 
 		
-	    Zostały napisane także metody dla pojedynczej zmiany w teamliscie lecz potrzebuja dopracowania 
+	    Zostały napisane także metody dla pojedynczej zmiany w teamliscie lecz potrzebuja dopracowania
 		a) set_teamName
 		b) set_teamTag
 		c) set_teamManager 
 
 	2) Wprowadzenie klas i metod do kodu +
+
+13.10
+Denis:
+	1) Prawki kodzie
