@@ -17,3 +17,5 @@ Denis:
 13.10
 Denis:
 	1) Prawki kodzie
+	2) Zapoznanie sie z Cogs
+	3) Wprowadzenie cogs do bota 
