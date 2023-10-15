@@ -1,3 +1,4 @@
+
 import discord
 from discord.ext import commands
 from keys import *
@@ -12,32 +13,33 @@ class RegisterCog(commands.Cog):
             return
 
         if message.channel.id == regChat:
-            checkMessage = message.content.split('|')
+            check_message = message.content.split('|')
+            guild = message.guild
+            role = discord.utils.get(guild.roles, id=cap_role_id)
 
             try:
-                tname = checkMessage[0]
-                ttag = checkMessage[1]
-                tmanager = checkMessage[2][3:-1].strip()
-
-                guild = message.guild
-                role = discord.utils.get(guild.roles, id=cap_role_id)
-                member = guild.get_member(int(tmanager))
+                team_manager = check_message[2][3:-1].strip()
+                member = guild.get_member(int(team_manager))
 
                 await member.add_roles(role)
             except:
                 await message.add_reaction(em_not_correct)
             else:
-                if len(Team.teamlist) <= 16:
+                if len(teamlist) <= 16 and len(check_message) == 3:
                     await message.add_reaction(em_correct)
 
-                    teamToTeamList = Team(tname, ttag, tmanager)
-                    Team.teamlist.append([teamToTeamList.name, teamToTeamList.tag, teamToTeamList.meneger])
+                    teamlist.append(check_message)
                 else:
                     await message.add_reaction(em_not_correct)
 
-        if len(Team.teamlist) == 16:
+        if len(teamlist) == 16:
             await message.channel.send("Teamlist full")
-            print(len(Team.teamlist))
+            print("length: " + str(len(teamlist)))
+            slot = 3
+            for team in teamlist:
+                print(str(slot) + " | " + team[0] + " / " + team[1] + " // " + team[2])
+                print('----------------------------------------------')
+                slot += 1
 
-def setup(client):
-    client.add_cog(RegisterCog(client))
+async def setup(client):
+    await client.add_cog(RegisterCog(client))

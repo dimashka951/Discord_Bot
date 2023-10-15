@@ -1,4 +1,5 @@
 # main.py
+import asyncio
 import discord
 from discord.ext import commands
 from keys import *
@@ -10,12 +11,14 @@ client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 async def on_ready():
     print(f'Logged in as {client.user.name}')
 
-@client.event
-async def on_message(message):
-    await client.process_commands(message)
+async def load_extensions():
+    for filename in os.listdir("./modules"):
+        if filename.endswith(".py"):
+            await client.load_extension(f"modules.{filename[:-3]}")
 
-for filename in os.listdir('./modules'):
-    if filename.endswith('.py'):
-        client.load_extension(f'cogs.{filename[:-3]}')
+async def setup():
+    await load_extensions()
+    await client.start(TOKEN)
 
-client.run(TOKEN)
+loop = asyncio.get_event_loop()
+loop.run_until_complete(setup())
