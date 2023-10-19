@@ -1,4 +1,4 @@
-TOKEN = "MTA4MzczNjkxMDgzODYyODQwMw.GQd43C.A_nl7ks1n7XE2v9tn8gDxiMGT1mjZcDfaZKYOY"
+TOKEN = "MTA4MzczNjkxMDgzODYyODQwMw.G0wzN6.cS1i2g0kJyUdeH2-aZjyxGlvjXwXYpKzQhtR4E"
 
 # class Team:
 #     def __init__(self, name, tag, maneger):

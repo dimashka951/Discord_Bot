@@ -19,3 +19,8 @@ Denis:
 	1) Prawki kodzie
 	2) Zapoznanie sie z Cogs
 	3) Wprowadzenie cogs do bota 
+
+19.10
+Denis:
+	1) Naprawianie bledów 
+	2) Planowanie następnych postępów i przepisywanie ich 	    do innych czlonków zespolu
