@@ -23,4 +23,12 @@ Denis:
 19.10
 Denis:
 	1) Naprawianie bledów 
-	2) Planowanie następnych postępów i przepisywanie ich 	    do innych czlonków zespolu
+	2) Planowanie następnych postępów i przepisywanie ich do innych czlonków zespolu
+
+20.10
+Denis: 
+	1) Zadania poza zakresu projektu. Nauka o pętlach.
+
+24.10
+Denis: 
+	1) Wyswietlanie teamlist 
