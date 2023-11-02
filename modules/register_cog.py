@@ -1,4 +1,4 @@
-
+#registercog
 import discord
 from discord.ext import commands
 from keys import *
